@@ -24,7 +24,8 @@ function renderTasks(){
   const done=tasks.filter(t=>t.done).length,pct=tasks.length?Math.round(done/tasks.length*100):0;$('#progressLabel').textContent=`${pct}%`;$('#progressBar').style.width=`${pct}%`;
   $('#progressHint').textContent=tasks.length?`${done} of ${tasks.length} tasks complete — keep going.`:'Add a few tasks to get started.';
 }
-function openDialog(){$('#applicationForm').reset();$('#applicationForm [name=date]').value=new Date().toISOString().slice(0,10);$('#appDialog').showModal();$('#applicationForm [name=company]').focus()}
+function localDateValue(date=new Date()){const localDate=new Date(date.getTime()-date.getTimezoneOffset()*60000);return localDate.toISOString().slice(0,10)}
+function openDialog(){$('#applicationForm').reset();$('#applicationForm [name=date]').value=localDateValue();$('#appDialog').showModal();$('#applicationForm [name=company]').focus()}
 $('#today').textContent=new Date().toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric'});
 $('#addTop').addEventListener('click',openDialog);$('#addButton').addEventListener('click',openDialog);$('#emptyAdd').addEventListener('click',openDialog);
 $('#search').addEventListener('input',render);$('#filter').addEventListener('change',render);
