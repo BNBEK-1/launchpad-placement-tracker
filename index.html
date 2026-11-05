@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f6fa"><meta name="description" content="A simple, student-friendly internship and placement application tracker.">
+  <title>Launchpad — Placement Prep Tracker</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#"><span class="brand-mark">L</span><span>launchpad<small>CAREER DASHBOARD</small></span></a>
+    <div class="side-label">WORKSPACE</div>
+    <button class="nav-item active"><span>▦</span> Overview</button>
+    <button class="nav-item" id="applicationsNav"><span>▤</span> Applications <b id="navCount">0</b></button>
+    <button class="nav-item" id="prepNav"><span>✓</span> Prep checklist</button>
+    <div class="sidebar-bottom"><div class="avatar">S</div><div><strong>Student workspace</strong><small>Your next opportunity starts here</small></div></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="crumb">Workspace <span>/</span> Overview</div><div class="today" id="today"></div></header>
+    <section class="welcome"><div><div class="eyebrow">YOUR CAREER, IN FOCUS</div><h1>Build your next chapter.</h1><p>Keep applications moving and make a little progress every day.</p></div><button class="primary" id="addTop">＋ Add application</button></section>
+    <section class="stats" aria-label="Application summary">
+      <article class="stat-card"><div class="stat-top"><span>Total applications</span><span class="stat-icon lilac">▤</span></div><strong id="totalStat">0</strong><small>Opportunities on your radar</small></article>
+      <article class="stat-card"><div class="stat-top"><span>In progress</span><span class="stat-icon blue">◷</span></div><strong id="progressStat">0</strong><small>Waiting on the next step</small></article>
+      <article class="stat-card"><div class="stat-top"><span>Interviews</span><span class="stat-icon peach">✦</span></div><strong id="interviewStat">0</strong><small>Conversations to prepare for</small></article>
+      <article class="stat-card"><div class="stat-top"><span>Offers</span><span class="stat-icon green">↗</span></div><strong id="offerStat">0</strong><small>Every step counts</small></article>
+    </section>
+    <section class="content-grid">
+      <article class="panel applications-panel"><div class="panel-heading"><div><h2>Applications</h2><p>Your opportunities, all in one place.</p></div><button class="secondary" id="addButton">＋ Add</button></div>
+        <div class="toolbar"><div class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="Search company or role…" aria-label="Search applications"></div><select id="filter" aria-label="Filter by status"><option value="all">All statuses</option><option>Wishlist</option><option>Applied</option><option>Assessment</option><option>Interview</option><option>Offer</option><option>Rejected</option></select></div>
+        <div class="table-scroll"><table><thead><tr><th>COMPANY & ROLE</th><th>STATUS</th><th>APPLIED</th><th>NEXT STEP</th><th></th></tr></thead><tbody id="applicationRows"></tbody></table></div>
+        <div class="empty" id="empty"><div class="empty-icon">✧</div><strong>No applications yet</strong><p>Add your first opportunity and keep your search organised.</p><button class="secondary" id="emptyAdd">＋ Add an application</button></div>
+      </article>
+      <aside class="panel prep-panel" id="prepPanel"><div class="panel-heading"><div><div class="eyebrow">SMALL STEPS, BIG MOMENTUM</div><h2>Prep checklist</h2><p>Make time for what moves you forward.</p></div></div><form class="task-form" id="taskForm"><input id="taskInput" placeholder="Add a prep task…" maxlength="90" aria-label="New prep task"><button aria-label="Add task">＋</button></form><div class="task-list" id="taskList"></div><div class="progress-wrap"><div class="progress-label"><span>Weekly progress</span><strong id="progressLabel">0%</strong></div><div class="progress-track"><div id="progressBar"></div></div><small id="progressHint">Add a few tasks to get started.</small></div></aside>
+    </section>
+    <footer>Made for the next step <span>✦</span> Your data stays in this browser.</footer>
+  </main>
+  <dialog id="appDialog"><form method="dialog" id="applicationForm"><div class="dialog-heading"><div><div class="eyebrow">NEW OPPORTUNITY</div><h2>Add an application</h2></div><button class="close" value="cancel" aria-label="Close">×</button></div><label>Company<input name="company" required maxlength="60" placeholder="e.g. Acme Labs"></label><label>Role<input name="role" required maxlength="70" placeholder="e.g. Software Engineering Intern"></label><div class="form-row"><label>Status<select name="status"><option>Wishlist</option><option selected>Applied</option><option>Assessment</option><option>Interview</option><option>Offer</option><option>Rejected</option></select></label><label>Applied on<input name="date" type="date"></label></div><label>Next step<input name="nextStep" maxlength="90" placeholder="e.g. Follow up next week"></label><div class="dialog-actions"><button class="secondary" value="cancel">Cancel</button><button class="primary" id="saveApplication" value="default">Save application</button></div></form></dialog>
+  <script src="app.js"></script>
+</body></html>
